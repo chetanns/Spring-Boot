@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.annotation.ReadMapping;
 import com.example.controller.HelloController;
+import com.example.utils.AnnotationProcessor;
 
 @RestController
 public class DocsController {
@@ -28,7 +28,7 @@ public class DocsController {
 		
 		//ReadMapping.getRestApiInfo(contextPath,HelloController.class,apiInfo);
 		
-		Map<String,String> apiInfo = ReadMapping.parseAnnotation(serverName+contextPath, "com.example.controller");
+		Map<String,String> apiInfo = AnnotationProcessor.parseAnnotation(serverName+contextPath, "com.example.controller");
 		
 		return apiInfo;
 	}

@@ -10,8 +10,8 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.annotation.ApiDoc;
-import com.example.annotation.ReadMapping;
 import com.example.controller.HelloController;
+import com.example.utils.AnnotationProcessor;
 
 /**
  * Hello world!
@@ -40,7 +40,7 @@ public class App
         	
         	Map<String,String> apiMap = new HashMap<String,String>();
         	
-        	ReadMapping.getRestApiInfo("/services",Class.forName(bean.getBeanClassName()),apiMap);
+        	AnnotationProcessor.getRestApiInfo("/services",Class.forName(bean.getBeanClassName()),apiMap);
     		
     		apiMap.forEach((k,v) -> System.out.println(k+":"+v));
         }

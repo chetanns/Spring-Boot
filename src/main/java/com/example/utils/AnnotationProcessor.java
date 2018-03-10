@@ -1,4 +1,4 @@
-package com.example.annotation;
+package com.example.utils;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -12,9 +12,10 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.annotation.ApiDoc;
 import com.example.controller.HelloController;
 
-public class ReadMapping {
+public class AnnotationProcessor {
 	
 	/**
 	 * Method takes the context path and the class object and search for the  @ApiDocs annotation in the method of the class 
@@ -61,7 +62,7 @@ public class ReadMapping {
 		
 		Map<String,String> apiMap = new HashMap<String,String>();
 		
-		ReadMapping.getRestApiInfo("/services",HelloController.class,apiMap);
+		AnnotationProcessor.getRestApiInfo("/services",HelloController.class,apiMap);
 		
 		apiMap.forEach((k,v) -> System.out.println(k+":"+v));
 	}
@@ -118,7 +119,7 @@ public class ReadMapping {
         	
         	//readMapping.getRestApiInfo("/services", bean.getClass());
         			
-        	ReadMapping.getRestApiInfo(contextPath ,Class.forName(bean.getBeanClassName()),apiMap);
+        	AnnotationProcessor.getRestApiInfo(contextPath ,Class.forName(bean.getBeanClassName()),apiMap);
     		
     		apiMap.forEach((k,v) -> System.out.println(k+":"+v));
         }
